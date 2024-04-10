@@ -1,16 +1,16 @@
 <idea-plugin>
-    <id>org.jetbrains.plugins.ToggleQuotes</id>
+    <id>ToggleQuotes</id>
     <name>Toggle quotes</name>
-    <vendor>DanieZa</vendor>
+    <vendor>Danie-ZA</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <actions>
-        <action id="ToggleQuotesAction" class="org.jetbrains.plugins.ToggleQuotes.actions.ToggleQuotesAction" text="Toggle Quotes" description="Toggles between single and double quotes for the selected text">
+        <action id="ToggleQuotesAction" class="ToggleQuotes.actions.ToggleQuotesAction" text="Toggle Quotes" description="Toggles between single and double quotes for the selected text">
             <keyboard-shortcut
-                    keymap="$default"
-                    first-keystroke="control pressed QUOTE"
-                    replace-all="true"
+                keymap="$default"
+                first-keystroke="control pressed QUOTE"
+                replace-all="true"
             />
         </action>
     </actions>

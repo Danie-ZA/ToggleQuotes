@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.ToggleQuotes.actions;
+package ToggleQuotes.actions;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

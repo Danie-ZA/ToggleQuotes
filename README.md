@@ -1,26 +1,10 @@
-# IntelliJ Platform Plugin Template
+# ToggleQuotes Plugin
 
 [![official JetBrains project](https://jb.gg/badges/official.svg)][jb:github]
-[![Twitter Follow](https://img.shields.io/badge/follow-%40JBPlatform-1DA1F2?logo=twitter)](https://twitter.com/JBPlatform)
 [![Build](https://github.com/JetBrains/intellij-platform-plugin-template/workflows/Build/badge.svg)][gh:build]
-[![Slack](https://img.shields.io/badge/Slack-%23intellij--platform-blue?style=flat-square&logo=Slack)](https://plugins.jetbrains.com/slack)
-
-![IntelliJ Platform Plugin Template][file:intellij-platform-plugin-template-dark]
-![IntelliJ Platform Plugin Template][file:intellij-platform-plugin-template-light]
-
-> **Note**
-> 
-> Click the <kbd>Use this template</kbd> button and clone it in IntelliJ IDEA.
 
 <!-- Plugin description -->
-**IntelliJ Platform Plugin Template** is a repository that provides a pure template to make it easier to create a new plugin project (check the [Creating a repository from a template][gh:template] article).
-
-The main goal of this template is to speed up the setup phase of plugin development for both new and experienced developers by preconfiguring the project scaffold and CI, linking to the proper documentation pages, and keeping everything organized.
-
-[gh:template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-<!-- Plugin description end -->
-
-If you're still not quite sure what this is all about, read our introduction: [What is the IntelliJ Platform?][docs:intro]
+**ToggleQuotes** plugin allows you to convert single quotes (') to double quotes ("), or vice versa, for highlighted text in the editor, using CMD + QUOTE/CTRL + QUOTE.
 
 > **Note**
 > 
@@ -151,101 +135,6 @@ For more details on how to generate proper values, check the relevant sections m
 To configure GitHub secret environment variables, go to the `⚙️ Settings > Secrets` section of your project repository:
 
 ![Settings > Secrets][file:settings-secrets.png]
-
-## Plugin template structure
-
-A generated IntelliJ Platform Plugin Template repository contains the following content structure:
-
-```
-.
-├── .github/                GitHub Actions workflows and Dependabot configuration files
-├── .run/                   Predefined Run/Debug Configurations
-├── build/                  Output build directory
-├── gradle
-│   ├── wrapper/            Gradle Wrapper
-│   └── libs.versions.toml  Gradle version catalog
-├── src                     Plugin sources
-│   ├── main
-│   │   ├── kotlin/         Kotlin production sources
-│   │   └── resources/      Resources - plugin.xml, icons, messages
-│   └── test
-│       ├── kotlin/         Kotlin test sources
-│       └── testData/       Test data used by tests
-├── .gitignore              Git ignoring rules
-├── build.gradle.kts        Gradle configuration
-├── CHANGELOG.md            Full change history
-├── gradle.properties       Gradle configuration properties
-├── gradlew                 *nix Gradle Wrapper script
-├── gradlew.bat             Windows Gradle Wrapper script
-├── LICENSE                 License, MIT by default
-├── qodana.yml              Qodana configuration file
-├── README.md               README
-└── settings.gradle.kts     Gradle project settings
-```
-
-In addition to the configuration files, the most crucial part is the `src` directory, which contains our implementation and the manifest for our plugin – [plugin.xml][file:plugin.xml].
-
-> **Note**
-> 
-> To use Java in your plugin, create the `/src/main/java` directory.
-
-
-## Plugin configuration file
-
-The plugin configuration file is a [plugin.xml][file:plugin.xml] file located in the `src/main/resources/META-INF` directory.
-It provides general information about the plugin, its dependencies, extensions, and listeners.
-
-```xml
-<idea-plugin>
-  <id>org.jetbrains.plugins.template</id>
-  <name>Template</name>
-  <vendor>JetBrains</vendor>
-  
-  <depends>com.intellij.modules.platform</depends>
-
-  <resource-bundle>messages.MyBundle</resource-bundle>
-  
-  <extensions defaultExtensionNs="com.intellij">
-    <toolWindow factoryClass="..." id="..."/>
-  </extensions>
-
-  <applicationListeners>
-    <listener class="..." topic="..."/>
-  </applicationListeners>
-</idea-plugin>
-```
-
-You can read more about this file in the [Plugin Configuration File][docs:plugin.xml] section of our documentation.
-
-
-## Sample code
-
-The prepared template provides as little code as possible because it is impossible for a general scaffold to fulfill all the specific requirements for all types of plugins (language support, build tools, VCS related tools).
-Therefore, the template contains only the following files:
-
-```
-.
-├── listeners
-│   └── MyApplicationActivationListener.kt  Application activation listener — detects when IDE frame is activated
-├── services
-│   └── MyProjectService.kt                 Project level service
-├── toolWindow
-│   └── MyToolWindowFactory.kt              Tool window factory — creates tool window content
-└── MyBundle.kt                             Bundle class providing access to the resources messages
-```
-
-These files are located in `src/main/kotlin`.
-This location indicates the language being used.
-So if you decide to use Java instead (or in addition to Kotlin), these sources should be located in the `src/main/java` directory.
-
-To start with the actual implementation, you may check our [IntelliJ Platform SDK DevGuide][docs], which contains an introduction to the essential areas of the plugin development together with dedicated tutorials.
-
-> **Warning**
-> 
-> Don't forget to remove all non-needed sample code files with their corresponding registration entries in `plugin.xml`.
-
-For those who value example codes the most, there are also available [IntelliJ SDK Code Samples][gh:code-samples] and [IntelliJ Platform Explorer][jb:ipe] – a search tool for browsing Extension Points inside existing implementations of open-source IntelliJ Platform plugins.
-
 
 ## Testing
 
@@ -518,14 +407,7 @@ You can get that token in your JetBrains Marketplace profile dashboard in the [M
 > Before using the automated deployment process, it is necessary to manually create a new plugin in JetBrains Marketplace to specify options like the license, repository URL, etc.
 > Please follow the [Publishing a Plugin][docs:publishing] instructions.
 
-
 ## FAQ
-
-### How to use Java in my project?
-
-Java language is supported by default along with Kotlin.
-Initially, the `/src/main/kotlin` directory is available with minimal examples.
-You can still replace it or add the `/src/main/java` directory to start working with Java language instead.
 
 ### How to disable *tests* or *build* job using the `[skip ci]` commit message?
 
@@ -536,95 +418,3 @@ If the message contains one of the following strings: `[skip ci]`, `[ci skip]`, 
 
 All the binaries created with each workflow are still available, but as an output artifact of each run together with tests and Qodana results.
 That approach gives more possibilities for testing and debugging pre-releases, for example, in your local environment.
-
-## Useful links
-
-- [IntelliJ Platform SDK Plugin SDK][docs]
-- [Gradle IntelliJ Plugin Documentation][gh:gradle-intellij-plugin-docs]
-- [IntelliJ Platform Explorer][jb:ipe]
-- [JetBrains Marketplace Quality Guidelines][jb:quality-guidelines]
-- [IntelliJ Platform UI Guidelines][jb:ui-guidelines]
-- [JetBrains Marketplace Paid Plugins][jb:paid-plugins]
-- [Kotlin UI DSL][docs:kotlin-ui-dsl]
-- [IntelliJ SDK Code Samples][gh:code-samples]
-- [JetBrains Platform Slack][jb:slack]
-- [JetBrains Platform Twitter][jb:twitter]
-- [IntelliJ IDEA Open API and Plugin Development Forum][jb:forum]
-- [Keep a Changelog][keep-a-changelog]
-- [GitHub Actions][gh:actions]
-
-[docs]: https://plugins.jetbrains.com/docs/intellij?from=IJPluginTemplate
-[docs:intellij-platform-kotlin-oom]: https://plugins.jetbrains.com/docs/intellij/using-kotlin.html#incremental-compilation
-[docs:intro]: https://plugins.jetbrains.com/docs/intellij/intellij-platform.html?from=IJPluginTemplate
-[docs:kotlin-ui-dsl]: https://plugins.jetbrains.com/docs/intellij/kotlin-ui-dsl-version-2.html?from=IJPluginTemplate
-[docs:kotlin]: https://plugins.jetbrains.com/docs/intellij/using-kotlin.html?from=IJPluginTemplate
-[docs:kotlin-stdlib]: https://plugins.jetbrains.com/docs/intellij/using-kotlin.html?from=IJPluginTemplate#kotlin-standard-library
-[docs:plugin.xml]: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html?from=IJPluginTemplate
-[docs:publishing]: https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate
-[docs:release-channel]: https://plugins.jetbrains.com/docs/intellij/publishing-plugin.html?from=IJPluginTemplate#specifying-a-release-channel
-[docs:using-gradle]: https://plugins.jetbrains.com/docs/intellij/developing-plugins.html?from=IJPluginTemplate
-[docs:plugin-signing]: https://plugins.jetbrains.com/docs/intellij/plugin-signing.html?from=IJPluginTemplate
-[docs:project-structure-settings]: https://www.jetbrains.com/help/idea/project-settings-and-structure.html
-[docs:testing-plugins]: https://plugins.jetbrains.com/docs/intellij/testing-plugins.html?from=IJPluginTemplate
-
-[file:draft-release.png]: ./.github/readme/draft-release.png
-[file:get-from-version-control]: ./.github/readme/get-from-version-control.png
-[file:gradle.properties]: ./gradle.properties
-[file:intellij-platform-plugin-template-dark]: ./.github/readme/intellij-platform-plugin-template-dark.svg#gh-dark-mode-only
-[file:intellij-platform-plugin-template-light]: ./.github/readme/intellij-platform-plugin-template-light.svg#gh-light-mode-only
-[file:libs.versions.toml]: ./gradle/libs.versions.toml
-[file:project-structure-sdk.png]: ./.github/readme/project-structure-sdk.png
-[file:plugin.xml]: ./src/main/resources/META-INF/plugin.xml
-[file:qodana.png]: ./.github/readme/qodana.png
-[file:qodana.yml]: ./qodana.yml
-[file:run-debug-configurations.png]: ./.github/readme/run-debug-configurations.png
-[file:run-logs.png]: ./.github/readme/run-logs.png
-[file:settings-secrets.png]: ./.github/readme/settings-secrets.png
-[file:template_cleanup.yml]: ./.github/workflows/template-cleanup.yml
-[file:ui-testing.png]: ./.github/readme/ui-testing.png
-[file:use-this-template.png]: ./.github/readme/use-this-template.png
-
-[gh:actions]: https://help.github.com/en/actions
-[gh:build]: https://github.com/JetBrains/intellij-platform-plugin-template/actions?query=workflow%3ABuild
-[gh:code-samples]: https://github.com/JetBrains/intellij-sdk-code-samples
-[gh:dependabot]: https://docs.github.com/en/free-pro-team@latest/github/administering-a-repository/keeping-your-dependencies-updated-automatically
-[gh:dependabot-pr]: https://github.com/JetBrains/intellij-platform-plugin-template/pull/73
-[gh:gradle-changelog-plugin]: https://github.com/JetBrains/gradle-changelog-plugin
-[gh:gradle-intellij-plugin]: https://github.com/JetBrains/gradle-intellij-plugin
-[gh:gradle-intellij-plugin-docs]: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-[gh:gradle-intellij-plugin-runIde]: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#tasks-runide
-[gh:gradle-intellij-plugin-runPluginVerifier]: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html#tasks-runpluginverifier
-[gh:gradle-qodana-plugin]: https://github.com/JetBrains/gradle-qodana-plugin
-[gh:intellij-ui-test-robot]: https://github.com/JetBrains/intellij-ui-test-robot
-[gh:kover]: https://github.com/Kotlin/kotlinx-kover
-[gh:releases]: https://github.com/JetBrains/intellij-platform-plugin-template/releases
-[gh:ui-test-example]: https://github.com/JetBrains/intellij-ui-test-robot/tree/master/ui-test-example
-
-[gradle]: https://gradle.org
-[gradle:build-cache]: https://docs.gradle.org/current/userguide/build_cache.html
-[gradle:configuration-cache]: https://docs.gradle.org/current/userguide/configuration_cache.html
-[gradle:kotlin-dsl]: https://docs.gradle.org/current/userguide/kotlin_dsl.html
-[gradle:kotlin-dsl-assignment]: https://docs.gradle.org/current/userguide/kotlin_dsl.html#kotdsl:assignment
-[gradle:lifecycle-tasks]: https://docs.gradle.org/current/userguide/java_plugin.html#lifecycle_tasks
-[gradle:releases]: https://gradle.org/releases
-[gradle:version-catalog]: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
-
-[jb:github]: https://github.com/JetBrains/.github/blob/main/profile/README.md
-[jb:download-ij]: https://www.jetbrains.com/idea/download
-[jb:forum]: https://intellij-support.jetbrains.com/hc/en-us/community/topics/200366979-IntelliJ-IDEA-Open-API-and-Plugin-Development
-[jb:ipe]: https://jb.gg/ipe
-[jb:my-tokens]: https://plugins.jetbrains.com/author/me/tokens
-[jb:paid-plugins]: https://plugins.jetbrains.com/docs/marketplace/paid-plugins-marketplace.html
-[jb:qodana]: https://www.jetbrains.com/help/qodana
-[jb:qodana-github-action]: https://www.jetbrains.com/help/qodana/qodana-intellij-github-action.html
-[jb:quality-guidelines]: https://plugins.jetbrains.com/docs/marketplace/quality-guidelines.html
-[jb:slack]: https://plugins.jetbrains.com/slack
-[jb:twitter]: https://twitter.com/JBPlatform
-[jb:ui-guidelines]: https://jetbrains.github.io/ui
-
-[codecov]: https://codecov.io
-[github-actions-skip-ci]: https://github.blog/changelog/2021-02-08-github-actions-skip-pull-request-and-push-workflows-with-skip-ci/
-[keep-a-changelog]: https://keepachangelog.com
-[keep-a-changelog-how]: https://keepachangelog.com/en/1.0.0/#how
-[semver]: https://semver.org
-[xpath]: https://www.w3.org/TR/xpath-21/
