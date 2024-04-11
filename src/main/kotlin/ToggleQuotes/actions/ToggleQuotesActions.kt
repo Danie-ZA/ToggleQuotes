@@ -10,16 +10,10 @@ class ToggleQuotesAction : AnAction() {
     override fun actionPerformed(e: AnActionEvent) {
         val replacedText: String;
         val project = e.project ?: return
-
-        if (project == null) return;
-
         val editor = e.getData(com.intellij.openapi.actionSystem.PlatformDataKeys.EDITOR) ?: return
-
-        if (editor == null) return;
 
         // Get the selected text in the editor
         val selectedText = editor.selectionModel.selectedText ?: return
-        if (selectedText == null) return;
 
         // Check if selected text contains double quotes
         if (selectedText.contains("\"")) {
